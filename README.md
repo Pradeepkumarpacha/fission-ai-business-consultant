@@ -1,16 +1,16 @@
-# 🚀 Fission AI Business Consultant
+# Fission AI Business Consultant
 
 **Enterprise-Grade AI Business Intelligence Platform**
 
 ## 📊 Overview
 Fission AI Business Consultant is a cutting-edge AI-powered platform that provides comprehensive business intelligence, strategic analysis, and marketing campaign generation for any company website.
 
-## 🎯 Key Features
-- 🕷️ **Business Intelligence** - Extracts contact info, services, social media
-- 🧠 **Strategic Analysis** - McKinsey-level recommendations with Claude AI
-- 💰 **Marketing Campaigns** - Budget allocation & ROI planning
-- 🎨 **Modern UI** - Dark cyber theme with animations
-- 📱 **Mobile Responsive** - Works on all devices
+## Key Features
+-  **Business Intelligence** - Extracts contact info, services, social media
+- **Strategic Analysis** - McKinsey-level recommendations with Claude AI
+- **Marketing Campaigns** - Budget allocation & ROI planning
+   **Modern UI** - Dark cyber theme with animations
+-  **Mobile Responsive** - Works on all devices
 
 ## ⚡ Quick Start
 ```bash
@@ -46,7 +46,7 @@ fission-ai-business-consultant/
 ## 📄 License
 MIT License - see LICENSE file for details.
 
-## 🙋‍♂️ Support
+##  Support
 - 📧 Email: pradeep.pacha@fissionlabs.com
 - 🌐 Company: [Fission Labs](https://fissionlabs.com)
 
