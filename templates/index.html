@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fission AI Business Consultant | Strategic Analysis Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --secondary: #16213e;
+      --accent: #00d4ff;
+      --accent-hover: #00b8e6;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --bg-primary: #0f0f23;
+      --bg-secondary: #1a1a2e;
+      --bg-tertiary: #16213e;
+      --text-primary: #ffffff;
+      --text-secondary: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --card-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0ea5e9 100%);
+      --gradient-dark: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+      --blur-bg: rgba(26, 26, 46, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 40% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
+      z-index: -1;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(1deg); }
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    /* Header Section */
+    .header {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .header-text h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .header-text p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .logo-container {
+      flex-shrink: 0;
+    }
+
+    .logo-container img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Input Section */
+    .input-section {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 35px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+
+    .input-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .input-header h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .input-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .input-wrapper {
+      position: relative;
+      flex: 1;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 18px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 18px 20px 18px 50px;
+      font-size: 16px;
+      background: var(--bg-tertiary);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+      background: var(--bg-secondary);
+    }
+
+    input[type="text"]::placeholder {
+      color: var(--text-muted);
+    }
+
+    .submit-btn {
+      padding: 18px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 200px;
+      justify-content: center;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #00b8e6 0%, #0284c7 100%);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Analysis Section */
+    .analysis-section {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+
+    .analysis-header {
+      background: var(--bg-tertiary);
+      padding: 25px 35px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .analysis-header h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .log-container {
+      max-height: 800px;
+      overflow-y: auto;
+      padding: 25px 35px;
+      background: var(--bg-secondary);
+    }
+
+    .log-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .log-container::-webkit-scrollbar-track {
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+    }
+
+    .log-container::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    .log-entry {
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .log-entry:hover {
+      transform: translateX(4px);
+    }
+
+    .agent-start {
+      background: linear-gradient(135deg, rgba(251, 146, 60, 0.1) 0%, rgba(251, 146, 60, 0.05) 100%);
+      border-left-color: #fb923c;
+      border: 1px solid rgba(251, 146, 60, 0.2);
+    }
+
+    .agent-success {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+      border-left-color: var(--success);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .discovery-output, .consultant-output, .campaign-output {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 212, 255, 0.03) 100%);
+      border-left-color: var(--accent);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-line;
+      color: var(--text-secondary);
+    }
+
+    .status-complete {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-top: 25px;
+      box-shadow: var(--shadow-md);
+      border: none;
+    }
+
+    /* CSS-only loading animation for FontAwesome icons */
+    .fa-spin {
+      animation: fa-spin 2s infinite linear;
+    }
+
+    @keyframes fa-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-tertiary);
+      padding: 30px;
+      text-align: center;
+      border-radius: 20px;
+      margin-top: 30px;
+      border: 1px solid var(--border);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .footer-text {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      .header {
+        padding: 25px;
+      }
+
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .logo-container img {
+        width: 150px;
+      }
+
+      form {
+        flex-direction: column;
+      }
+
+      .submit-btn {
+        min-width: unset;
+      }
+
+      .input-section, .log-container {
+        padding: 20px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* Enhanced visual effects */
+    .glow {
+      position: relative;
+    }
+
+    .glow::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: var(--gradient-primary);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .glow:hover::before {
+      opacity: 0.7;
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <div class="header">
+      <div class="header-content">
+        <div class="header-text">
+          <h1>AI Business Consultant</h1>
+          <p>Enterprise-Grade Strategic Analysis Powered by AI Innovation & Engineering Excellence</p>
+        </div>
+        <div class="logo-container">
+          <img src="https://cdn.prod.website-files.com/61ffed246e785f28c1a44633/63edbbc5b6b5f37b605cf0f2_fl-footer-p-500.png" alt="Fission Labs Logo" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Section -->
+    <div class="input-section">
+      <div class="input-header">
+        <h2><i class="fas fa-chart-line"></i> Strategic Business Analysis</h2>
+        <p>Enter your website URL to receive comprehensive business intelligence and strategic recommendations</p>
+      </div>
+      <div class="form-container">
+        <form method="POST">
+          <div class="input-wrapper">
+            <i class="fas fa-globe"></i>
+            <input type="text" name="url" placeholder="https://example.com" value="{{ url }}" required>
+          </div>
+          <button type="submit" class="submit-btn glow">
+            <i class="fas fa-rocket"></i>
+            Analyze & Strategize
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Analysis Results Section -->
+    {% if log %}
+    <div class="analysis-section">
+      <div class="analysis-header">
+        <h3>
+          <i class="fas fa-brain"></i>
+          Analysis Results
+        </h3>
+      </div>
+      <div class="log-container">
+        {% for line in log %}
+          {% if "🔄" in line %}
+            <div class="log-entry agent-start">
+              <i class="fas fa-cog fa-spin"></i> {{ line }}
+            </div>
+          {% elif "✅" in line and "Completed" in line %}
+            <div class="status-complete pulse">
+              <i class="fas fa-check-circle"></i> {{ line }}
+            </div>
+          {% elif "BUSINESS INTELLIGENCE ANALYSIS" in line %}
+            <div class="log-entry discovery-output">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 600; color: var(--accent);">
+                <i class="fas fa-search"></i> BUSINESS INTELLIGENCE ANALYSIS
+              </div>
+              {{ line|safe }}
+            </div>
+          {% elif "BUSINESS CONSULTANT STRATEGIC ANALYSIS" in line %}
+            <div class="log-entry consultant-output">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 600; color: var(--accent);">
+                <i class="fas fa-lightbulb"></i> STRATEGIC CONSULTATION
+              </div>
+              {{ line|safe }}
+            </div>
+          {% elif "MARKETING CAMPAIGN STRATEGY" in line %}
+            <div class="log-entry campaign-output">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 600; color: var(--accent);">
+                <i class="fas fa-bullhorn"></i> MARKETING STRATEGY
+              </div>
+              {{ line|safe }}
+            </div>
+          {% else %}
+            <div class="log-entry" style="background: linear-gradient(135deg, rgba(148, 163, 184, 0.08) 0%, rgba(148, 163, 184, 0.03) 100%); border-left-color: var(--text-muted); border: 1px solid rgba(148, 163, 184, 0.2);">
+              <i class="fas fa-info-circle"></i> {{ line|safe }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-content">
+        <div class="footer-text">
+          Powered by Fission Labs • AI-Led Innovation • Engineering Excellence
+        </div>
+        <div class="footer-links">
+          <a href="https://www.fissionlabs.com" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Visit Fission Labs
+          </a>
+          <a href="mailto:info@fissionlabs.com">
+            <i class="fas fa-envelope"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
